@@ -1,9 +1,11 @@
 package com.evento.sistema.controllers;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.evento.sistema.entities.Evento;
 import com.evento.sistema.repositories.RepositoryEvento;
@@ -27,5 +29,13 @@ public class EventoController {
 	        evr.save(evento);
 
 	       	return "redirect:/cad";
+	    }
+	    
+	    @RequestMapping("/eventos")
+	    public ModelAndView listaEventos() {	
+	    	ModelAndView mv = new ModelAndView("index");
+	    	Iterable<Evento> eventos = evr.findAll();	
+	    	mv.addObject("eventos", eventos);
+	    	return mv;
 	    }
 }
