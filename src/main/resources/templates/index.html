@@ -17,25 +17,25 @@
 <h1>Lista de Eventos</h1>
 <h3><a href="/cad" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i> Cadastar
     Evento</a></h3>
-<table>
+<table class="container">
     <thead>
     <tr>
         <th>Nome</th>
         <th>Local</th>
         <th>Data</th>
         <th>Horario</th>
+        <th>Deletar</th>
     </tr>
     </thead>
     <tbody>
-
     <tr th:each="evento : ${eventos}">
-        <td><span th:text="${evento.name}"></span></td>
+        <td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigo)).build()}"><span th:text="${evento.nome}"></span></a></td>
         <td><span th:text="${evento.local}"></span></td>
         <td><span th:text="${evento.data}"></span></td>
         <td><span th:text="${evento.horario}"></span></td>
-    </tbody>
     </tr>
-    </div>
+    </tbody>
+
 </table>
 
 <!--JavaScript at end of body for optimized loading-->
